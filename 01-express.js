@@ -26,6 +26,7 @@ app.use("/modo", require("./router/modo"));
 app.use("/minileyendas", require("./router/minileyendas"));
 app.use("/build", require("./router/build"));
 app.use("/items", require("./router/items"));
+app.use("/login", require("./router/login"));
 // Si no se encuentra el recurso (Error 404) con página personalizada
 app.use( (req, res) => {
     res.status(404).render("404",{

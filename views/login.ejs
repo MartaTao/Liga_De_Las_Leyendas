@@ -1,0 +1,12 @@
+<%- include("templates/cabecera.ejs", {cabecera:'Minileyendas'}) %>
+    <div class="container">
+        <h1>Login</h1>
+        <form action="/login" method="post">
+            <label>Nombre</label><br>
+            <input type="text" name="nombre" placeholder="nombre">
+            <label>Contraseña</label><br>
+            <input type="password" name="pass" placeholder="Contraseña">
+            <input type="sunmit" value="Login">
+        </form>
+    </div>
+    <%- include("templates/footer.ejs") %>
