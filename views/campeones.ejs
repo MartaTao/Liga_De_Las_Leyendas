@@ -1,0 +1,56 @@
+<%- include("templates/cabecera.ejs", {cabecera:'Campeones'}) %>
+    <div class="container">
+        <h1>Campeones</h1>
+        <div class="row">
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/campeones/crear">Crear un nuevo campeon</a></div>
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/">Volver</a></div>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de salida</th>
+                    <th scope="col">Habilidades</th>
+                    <th scope="col">Lore</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Región</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (arrayCampeones.length> 0) { %>
+                    <!--Haremos el foreach para recorrer el array-->
+                    <% arrayCampeones.forEach(campeones=> { %>
+                        <tr>
+                            <th scope="row">
+                                <%= campeones.id %>
+                            </th>
+                            <td>
+                                <%= campeones.Nombre %>
+                            </td>
+                            <td>
+                                <%= campeones.FechaSalida %>
+                            </td>
+                            <td>
+                                <%= campeones.Habilidades %>
+                            </td>
+                            <td>
+                                <%= campeones.Lore%>
+                            </td>
+                            <td>
+                                <%= campeones.Precio %>
+                            </td>
+                            <td>
+                                <%= campeones.Region %>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="campeones/<%= campeones.id %>">Editar/Eliminar</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                            <% } %>
+            </tbody>
+        </table>
+    </div>
+    <%- include("templates/footer.ejs") %>

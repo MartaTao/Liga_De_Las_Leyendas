@@ -1,0 +1,48 @@
+<%- include("templates/cabecera.ejs", {cabecera:'Items'}) %>
+    <div class="container">
+        <h1>Items</h1>
+        <div class="row">
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/modo/crear">Crear una nueva Items</a></div>
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/">Volver</a></div>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Tier</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Mini componentes</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (arrayItems.length> 0) { %>
+                    <!--Haremos el foreach para recorrer el array-->
+                    <% arrayItems.forEach(items=> { %>
+                        <tr>
+                            <th scope="row">
+                                <%= items.id %>
+                            </th>
+                            <td>
+                                <%= items.Nombre %>
+                            </td>
+                            <td>
+                                <%= items.Tier %>
+                            </td>
+                            <td>
+                                <%= items.Precio %>
+                            </td>
+                            <td>
+                                <%= items.MiniComponentes%>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="items/<%= items.id %>">Editar/Eliminar</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                            <% } %>
+            </tbody>
+        </table>
+    </div>
+    <%- include("templates/footer.ejs") %>

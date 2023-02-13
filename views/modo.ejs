@@ -1,0 +1,44 @@
+<%- include("templates/cabecera.ejs", {cabecera:'Modo'}) %>
+    <div class="container">
+        <h1>Modo</h1>
+        <div class="row">
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/modo/crear">Crear un nuevo campeon</a></div>
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/">Volver</a></div>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">NumJugadores</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (arrayModo.length> 0) { %>
+                    <!--Haremos el foreach para recorrer el array-->
+                    <% arrayModo.forEach(modo=> { %>
+                        <tr>
+                            <th scope="row">
+                                <%= modo.id %>
+                            </th>
+                            <td>
+                                <%= modo.Nombre %>
+                            </td>
+                            <td>
+                                <%= modo.NumJugadores %>
+                            </td>
+                            <td>
+                                <%= modo.Descripcion %>
+                            </td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" href="modo/<%= modo.id %>">Editar/Eliminar</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                            <% } %>
+            </tbody>
+        </table>
+    </div>
+    <%- include("templates/footer.ejs") %>
