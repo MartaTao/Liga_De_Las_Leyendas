@@ -10,6 +10,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Imágen  </th>
                     <th scope="col">Fecha de salida</th>
                     <th scope="col">Habilidades</th>
                     <th scope="col">Lore</th>
@@ -28,6 +29,9 @@
                             </th>
                             <td>
                                 <%= campeones.Nombre %>
+                            </td>
+                            <td>
+                                <img src="images/<%= campeones.Img%>" width="100%">
                             </td>
                             <td>
                                 <%= campeones.FechaSalida %>
