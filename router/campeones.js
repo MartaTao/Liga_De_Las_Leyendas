@@ -5,7 +5,6 @@ const Campeones = require('../models/campeones');
 router.get('/', async (req, res) => {
     try {
         const arrayCampeonesDB = await Campeones.find();
-        console.log(arrayCampeonesDB);
         res.render("campeones", {
             arrayCampeones: arrayCampeonesDB
         })
@@ -18,7 +17,6 @@ router.get('/crearCampeon', (req, res) => {
 })
 router.post('/', async (req, res) => {
     const body = req.body 
-    console.log(body) 
     try {
         const campeonesDB = new Campeones(body) 
         await campeonesDB.save()
@@ -27,18 +25,33 @@ router.post('/', async (req, res) => {
         console.log('error', error)
     }
 })
-router.get('/:id', async(req, res) => { 
+router.get('/:id/editar', async(req, res) => { 
     const id = req.params.id 
     try {
         const campeonesDB = await Campeones.findOne({ _id: id }) 
-        console.log(campeonesDB)
-        res.render('detalleCamepon', { 
+        res.render('detalleCampeon', { 
             campeones:campeonesDB,
             error: false
         })
     } catch (error) { 
         console.log('Se ha producido un error', error)
-        res.render('detalle', { 
+        res.render('detalleCampeon', { 
+            error: true,
+            mensaje: 'Campeon no encontrado!'
+        })
+    }
+})
+router.get('/:id/:nombre', async(req, res) => { 
+    const id = req.params.id 
+    try {
+        const campeonesDB = await Campeones.findOne({ _id: id }) 
+        res.render('campeon', { 
+            campeon:campeonesDB,
+            error: false
+        })
+    } catch (error) { 
+        console.log('Se ha producido un error', error)
+        res.render('campeon', { 
             error: true,
             mensaje: 'Campeon no encontrado!'
         })
@@ -49,7 +62,6 @@ router.delete('/:id', async (req, res) => {
     console.log('id desde backend', id)
     try {
         const campeonesDB = await Campeones.findByIdAndDelete({ _id: id });
-        console.log(campeonesDB)
         if (!campeonesDB) {
             res.json({ 
                 estado: false,
@@ -68,13 +80,10 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
     const id = req.params.id;
     const body = req.body;
-    console.log(id)
-    console.log('body', body)
     try {
         const campeonesDB = await Campeones.findByIdAndUpdate(
             id, body, { useFindAndModify: false }
         )
-        console.log(campeonesDB)
         res.json({
             estado: true,
             mensaje: 'Campeon editado'

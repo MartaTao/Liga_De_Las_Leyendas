@@ -5,8 +5,7 @@ const Build = require('../models/build');
 router.get('/', async (req, res) => {
     try {
         const arrayBuildDB = await Build.find();
-        console.log(arrayBuildDB);
-        res.render("build", {
+        res.render("builds", {
             arrayBuild: arrayBuildDB
         })
     } catch (error) {
@@ -22,23 +21,40 @@ router.post('/', async (req, res) => {
     try {
         const buildDB = new Build(body) 
         await buildDB.save()
-        res.redirect('/build') 
+        res.redirect('/builds') 
     } catch (error) {
         console.log('error', error)
     }
 })
-router.get('/:id', async(req, res) => { 
+router.get('/:id/editar', async(req, res) => { 
     const id = req.params.id 
     try {
         const buildDB = await Build.findOne({ _id: id }) 
         console.log(buildDB)
-        res.render('detalle', { 
+        res.render('detalleBuild', { 
             build:buildDB,
             error: false
         })
     } catch (error) { 
         console.log('Se ha producido un error', error)
-        res.render('detalle', { 
+        res.render('detalleBuild', { 
+            error: true,
+            mensaje: 'Build no encontrada!'
+        })
+    }
+})
+router.get('/:id/:nombre', async(req, res) => { 
+    const id = req.params.id 
+    try {
+        const buildDB = await Build.findOne({ _id: id }) 
+        console.log(buildDB)
+        res.render('build', { 
+            build:buildDB,
+            error: false
+        })
+    } catch (error) { 
+        console.log('Se ha producido un error', error)
+        res.render('build', { 
             error: true,
             mensaje: 'Build no encontrada!'
         })

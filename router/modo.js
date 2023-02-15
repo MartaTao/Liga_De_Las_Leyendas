@@ -5,7 +5,6 @@ const Modo = require('../models/Modo');
 router.get('/', async (req, res) => {
     try {
         const arrayModoDB = await Modo.find();
-        console.log(arrayModoDB);
         res.render("modo", {
             arrayModo: arrayModoDB
         })

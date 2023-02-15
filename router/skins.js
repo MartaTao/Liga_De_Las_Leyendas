@@ -5,7 +5,6 @@ const Skins = require('../models/Skins');
 router.get('/', async (req, res) => {
     try {
         const arraySkinsDB = await Skins.find();
-        console.log(arraySkinsDB);
         res.render("skins", {
             arraySkins: arraySkinsDB
         })

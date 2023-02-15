@@ -15,7 +15,7 @@ router.post('/',async (req,res)=>{
         return res.render('login', { error: 'Usuario y contraseña vacíos' });
      }
     try{
-        const usuario= await Administradores.findOne({nombre})
+        const usuario= await Administradores.findOne({nombre:nombre})
         console.log(usuario);
         if( usuario.Contrasena==contrasena){
             req.session.user=usuario;

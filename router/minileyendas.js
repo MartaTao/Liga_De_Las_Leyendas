@@ -5,7 +5,6 @@ const MiniLeyendas = require('../models/miniLeyendas');
 router.get('/', async (req, res) => {
     try {
         const arrayMiniLeyendasDB = await MiniLeyendas.find();
-        console.log(arrayMiniLeyendasDB);
         res.render("minileyendas", {
             arrayMinileyendas: arrayMiniLeyendasDB
         })

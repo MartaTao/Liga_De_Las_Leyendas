@@ -1,0 +1,25 @@
+<%- include("templates/cabecera.ejs", {cabecera:'Campeones'}) %>
+    <div class="container">
+        <h1><%= campeon.Nombre %></h1>
+        <div class="row">
+            <h2>Historia</h2>
+            <div class="col-12"><p><%= campeon.Lore%></p></div>
+        </div>
+        <div class="row">
+            <h2>Habilidades</h2>
+            <div class="col-6"></div>
+            <div class="col-6"><p><%= campeon.Habilidades %></p></div>
+        </div>
+        <div class="row">
+            <h2>Región</h2>
+            <div class="col-6"></div>
+            <div class="col-6"><p><%= campeon.Region %></p></div>
+        </div>
+        <div class="row">
+            <h2>Precio</h2>
+            <div class="col-6"></div>
+            <div class="col-6"><p><%= campeon.Precio %></p></div>
+        </div>
+        <a class="btn btn-info" href="/">Volver</a>
+    </div>
+    <%- include("templates/footer.ejs") %>
