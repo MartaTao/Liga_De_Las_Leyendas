@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
         console.error(error)
     }
 })
-router.get('/crear', (req, res) => {
-    res.render('crear'); 
+router.get('/crearCampeon', (req, res) => {
+    res.render('crearCampeon'); 
 })
 router.post('/', async (req, res) => {
     const body = req.body 
@@ -32,7 +32,7 @@ router.get('/:id', async(req, res) => {
     try {
         const campeonesDB = await Campeones.findOne({ _id: id }) 
         console.log(campeonesDB)
-        res.render('detalle', { 
+        res.render('detalleCamepon', { 
             campeones:campeonesDB,
             error: false
         })

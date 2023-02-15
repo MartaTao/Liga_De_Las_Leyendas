@@ -1,0 +1,82 @@
+<%- include("templates/cabecera", {cabecera: 'Información del campeon' }) %>
+    <div class="container">
+        <h1>Detalles del campeon</h1>
+        <% if (error) { %>
+            <%= mensaje %>
+                <a href="/campeones" class="btn btn-dark btn-block my-2">
+                    Volver
+                </a>
+                <% } %>
+                    <% if (!error) { %>
+                        <form id="editar" data-id="<%= campeones.id %>">
+                            <input type="text" value="<%= campeones.Nombre %>" class="form-control my-2" name="nombre"
+                                id="nombreInput">
+                                <input type="text" value="<%= campeones.FechaSalida %>" class="form-control my-2" name="fechasalida"
+                                id="bioInput">
+                            <input type="text" value="<%= campeones.Habilidades %>" class="form-control my-2" name="habilidades"
+                                id="regionInput">
+                            <input type="text" value="<%= campeones.Lore %>" class="form-control my-2" name="lore"
+                                id="ciudadInput">
+                            <input type="text" value="<%= campeones.Precio %>" class="form-control my-2" name="precio"
+                                id="numGymInput">
+                            <input type="text" value="<%= campeones.Region %>" class="form-control my-2"
+                                name="region" id="lista_PokemonInput">
+                            <button class="btn btn-warning btn-sm" type="submit">
+                                Editar
+                            </button>
+                        </form>
+                        <hr>
+                        <button class="btn btn-danger btn-sm" data-id="<%= campeones.id %>">
+                            Eliminar
+                        </button>
+                        <% } %>
+
+    </div>
+
+    <script>
+        //Eliminar
+        const btnEliminar = document.querySelector('.btn-danger')
+        btnEliminar.addEventListener('click', async () => {
+            console.log(btnEliminar.dataset.id)
+            try {
+                const data = await fetch(`/campeones/${btnEliminar.dataset.id}`, {
+                    method: 'delete'
+                })
+                const res = await data.json()
+                console.log(res)
+                if (res.estado) {
+                    window.location.href = '/campeones'
+                } else {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+        //Editar
+        const formEditar=document.querySelector('#editar');
+        formEditar.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const nombre = formEditar.elements['nombre'].value
+            const fechasalida= formEditar.elements['fechasalida'].value
+            const habilidades = formEditar.elements['habilidades'].value
+            const lore = formEditar.elements['lore'].value
+            const precio = formEditar.elements['precio'].value
+            const region = formEditar.elements['region'].value
+            const id = formEditar.dataset.id
+            const data = await fetch(`/campeones/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre, fechasalida, habilidades, lore, precio, region })
+            })
+            const res = await data.json()
+            if (res.estado) {
+                window.location.href = '/campeones'
+            } else {
+                console.log(res)
+            }
+        })
+    </script>
+    <%- include("templates/footer") %>
