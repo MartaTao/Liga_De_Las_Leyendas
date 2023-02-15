@@ -1,8 +1,10 @@
 const express = require('express');
+const session = require('express-session');
 const bodyParser  = require('body-parser');
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(session({ secret: 'secret-key', resave: false, saveUninitialized: false}));
 require('dotenv').config();
 const port = process.env.PORT;
 //Conexión a base de datos
@@ -19,7 +21,7 @@ app.set('view engine','ejs');
 //Middleware
 app.use(express.static(__dirname+'/public'));
 // Llamadas a las rutas
-//app.use("/", require("./router/rutas"));
+app.use("/", require("./router/rutas"));
 app.use("/campeones", require("./router/campeones"));
 app.use("/skins", require("./router/skins"));
 app.use("/modo", require("./router/modo"));
@@ -27,6 +29,7 @@ app.use("/minileyendas", require("./router/minileyendas"));
 app.use("/build", require("./router/build"));
 app.use("/items", require("./router/items"));
 app.use("/login", require("./router/login"));
+app.use("/menu", require("./router/rutas"));
 // Si no se encuentra el recurso (Error 404) con página personalizada
 app.use( (req, res) => {
     res.status(404).render("404",{

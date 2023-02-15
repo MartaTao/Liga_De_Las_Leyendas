@@ -1,12 +1,21 @@
 <%- include("templates/cabecera.ejs", {cabecera:'Inicio de sesión'}) %>
     <div class="container">
         <h1>Login</h1>
-        <form action="/login" method="post">
-            <label>Nombre</label><br>
-            <input type="text" name="nombre" placeholder="nombre">
-            <label>Contraseña</label><br>
-            <input type="password" name="pass" placeholder="Contraseña">
-            <input type="sunmit" value="Login">
-        </form>
+        <% if(error){%>
+            <div class="alert alert-danger">
+                <%= error%>
+            </div>
+            <%}%>
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <label>Nombre</label><br>
+                        <input type="text" name="nombre" placeholder="nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label><br>
+                        <input type="password" name="contrasena" placeholder="Contraseña">
+                    </div>
+                    <button type="sunmit" class="btn btn-primary">Login</button>
+                </form>
     </div>
     <%- include("templates/footer.ejs") %>

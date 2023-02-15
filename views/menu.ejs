@@ -1,6 +1,27 @@
-<%- include("templates/cabecera.ejs", {cabecera:'Minileyendas'}) %>
+<%- include("templates/cabecera.ejs", {cabecera:'Menu'}) %>
     <div class="container">
-        <h1>Login</h1>
-        <form action=""></form>
+        <h1>Menu</h1>
+        <div class="row">
+            <div class="col-4">
+                <a class="btn btn-info btn-outline-light" href="/campeones">Campeones</a>
+            </div>
+            <div class="col-4">
+                <a class="btn btn-info btn-outline-light" href="/skins">Skins</a>
+            </div>
+            <div class="col-4">
+                <a class="btn btn-info btn-outline-light" href="/minileyendas">Minileyendas</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <a class="btn btn-info btn-outline-light" href="/modo">Modos</a>
+            </div>
+            <div class="col-4">
+                <a class="btn btn-info btn-outline-light" href="/build">Builds</a>
+            </div>
+            <div class="col-4">
+                <a class="btn btn-info btn-outline-light" href="/items">Items</a>
+            </div>
+        </div>
     </div>
     <%- include("templates/footer.ejs") %>
