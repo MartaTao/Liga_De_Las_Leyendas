@@ -1,25 +1,31 @@
 const express = require('express');
+const router = express.Router();
 const Administradores = require('../models/administradores');
 const bcrypt=require("bcrypt");
-const router = express.Router();
-router.post("/login",(req,res)=>{
-    const nombre=req.body.nombre;
-    const pass=req.body.pass;
-    Administradores.findOne({nombre:nombre},(err, user)=>{
+router.get('/login',(req,res)=>{
+    res.render('login');
+})
+router.post('/login',(req,res)=>{
+    const { nombre, contrasena }=req.body;
+    Administradores.findOne({nombre},(err,user)=>{
         if(err){
             console.log(err);
         }else{
             if(user){
-                bcrypt.compare(pass, user.contrasena, (err, result)=>{
-                    if(result===true){
-                        res.render('menu');
-                    }else{
-                        res.render('login');
-                    }
-                });
+                if(user.contrasena==contrasena){
+                    req.session.user=user;
+                    res.redirect('/menu');
+                }else{
+                    res.render('login',{
+                        error:'Contraseña incorrecta'
+                    });
+                }
             }else{
-                res.render('login');
+                res.render('login',{
+                    error:'Usuario no encontrado'
+                });
             }
         }
     })
 })
+module.exports = router;
