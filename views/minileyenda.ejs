@@ -1,0 +1,14 @@
+<%- include("templates/cabecera.ejs", {cabecera:'Minileyenda'}) %>
+    <div class="container">
+        <h1><%= miniLeyendas.Nombre %></h1>
+        <div class="row">
+            <h2>Tier</h2>
+            <div class="col-12"><%= miniLeyendas.Tier %></p></div>
+        </div>
+        <div class="row">
+            <h2>Precio</h2>
+            <div class="col-12"><p><%= miniLeyendas.Precio %></p></div>
+        </div>
+        <a class="btn btn-info" href="/">Volver</a>
+    </div>
+    <%- include("templates/footer.ejs") %>

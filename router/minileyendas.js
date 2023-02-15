@@ -26,18 +26,35 @@ router.post('/', async (req, res) => {
         console.log('error', error)
     }
 })
-router.get('/:id', async(req, res) => { 
+router.get('/:id/editar', async(req, res) => { 
     const id = req.params.id 
     try {
         const miniLeyendasDB = await MiniLeyendas.findOne({ _id: id }) 
         console.log(miniLeyendasDB)
-        res.render('detalle', { 
+        res.render('detalleMinileyenda', { 
             miniLeyendas:miniLeyendasDB,
             error: false
         })
     } catch (error) { 
         console.log('Se ha producido un error', error)
-        res.render('detalle', { 
+        res.render('detalleMinileyenda', { 
+            error: true,
+            mensaje: 'MiniLeyendas no encontrado!'
+        })
+    }
+})
+router.get('/:id/:nombre', async(req, res) => { 
+    const id = req.params.id 
+    try {
+        const miniLeyendasDB = await MiniLeyendas.findOne({ _id: id }) 
+        console.log(miniLeyendasDB)
+        res.render('minileyenda', { 
+            miniLeyendas:miniLeyendasDB,
+            error: false
+        })
+    } catch (error) { 
+        console.log('Se ha producido un error', error)
+        res.render('minileyenda', { 
             error: true,
             mensaje: 'MiniLeyendas no encontrado!'
         })

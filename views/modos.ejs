@@ -3,7 +3,7 @@
         <h1>Modo</h1>
         <div class="row">
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/modo/crear">Crear un nuevo campeon</a></div>
-            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/">Volver</a></div>
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/menu">Volver</a></div>
         </div>
         <table class="table">
             <thead class="thead-dark">
@@ -18,7 +18,7 @@
             <tbody>
                 <% if (arrayModo.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
-                    <% arrayModo.forEach(modo=> { %>
+                    <% arrayModo.forEach(modo => { %>
                         <tr>
                             <th scope="row">
                                 <%= modo.id %>
@@ -33,7 +33,7 @@
                                 <%= modo.Descripcion %>
                             </td>
                             <td>
-                                <a class="btn btn-warning btn-sm" href="modo/<%= modo.id %>">Editar/Eliminar</a>
+                                <a class="btn btn-warning btn-sm" href="modos/<%= modo.id %>">Editar/Eliminar</a>
                             </td>
                         </tr>
                         <% }) %>

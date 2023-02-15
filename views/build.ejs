@@ -1,14 +1,22 @@
-<%- include("templates/cabecera.ejs", {cabecera:<%= build.Nombre %>}) %>
+<%- include("templates/cabecera.ejs", {cabecera:'Build'}) %>
     <div class="container">
-        
-        <h1><%= build.Nombre %></h1>
+        <h1>
+            <%= build.Nombre %>
+        </h1>
         <div class="row">
             <h2>Componentes</h2>
-            <div class="col-12"><p><%= build.Objetos %></div>
+            <div class="col-12">
+                <p>
+                    <%= build.Objetos %>
+            </div>
         </div>
         <div class="row">
             <h2>Precio</h2>
-            <p><%= build.PrecioTotal %></p>
+            <div class="col-12">
+                <p>
+                    <%= build.PrecioTotal %>
+                </p>
+            </div>
         </div>
         <a class="btn btn-info" href="/">Volver</a>
     </div>

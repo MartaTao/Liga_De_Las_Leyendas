@@ -3,7 +3,7 @@
         <h1>Minileyendas</h1>
         <div class="row">
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/modo/crear">Crear una nueva Minileyendas</a></div>
-            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/">Volver</a></div>
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/menu">Volver</a></div>
         </div>
         <table class="table">
             <thead class="thead-dark">
@@ -19,25 +19,25 @@
             <tbody>
                 <% if (arrayMinileyendas.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
-                    <% arrayMinileyendas.forEach(minileyendas=> { %>
+                    <% arrayMinileyendas.forEach(miniLeyendas=> { %>
                         <tr>
                             <th scope="row">
-                                <%= minileyendas.id %>
+                                <%= miniLeyendas.id %>
                             </th>
                             <td>
-                                <%= minileyendas.Nombre %>
+                                <%= miniLeyendas.Nombre %>
                             </td>
                             <td>
-                                <%= minileyendas.Tier %>
+                                <%= miniLeyendas.Tier %>
                             </td>
                             <td>
-                                <%= minileyendas.Precio %>
+                                <%= miniLeyendas.Precio %>
                             </td>
                             <td>
-                                <%= minileyendas.Fecha %>
+                                <%= miniLeyendas.Fecha %>
                             </td>
                             <td>
-                                <a class="btn btn-warning btn-sm" href="minileyendas/<%= minileyendas.id %>">Editar/Eliminar</a>
+                                <a class="btn btn-warning btn-sm" href="minileyendas/<%= miniLeyendas.id %>">Editar/Eliminar</a>
                             </td>
                         </tr>
                         <% }) %>

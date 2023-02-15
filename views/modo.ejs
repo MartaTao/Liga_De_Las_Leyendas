@@ -1,0 +1,14 @@
+<%- include("templates/cabecera.ejs", {cabecera:'Modo'}) %>
+    <div class="container">
+        <h1><%= modo.Nombre %></h1>
+        <div class="row">
+            <h2>Descripción</h2>
+            <div class="col-12"><p><%= modo.Descripcion %></p></div>
+        </div>
+        <div class="row">
+            <h2>Numero de jugadores</h2>
+            <div class="col-12"><p><%= modo.NumJugadores %></p></div>
+        </div>
+        <a class="btn btn-info" href="/">Volver</a>
+    </div>
+    <%- include("templates/footer.ejs") %>

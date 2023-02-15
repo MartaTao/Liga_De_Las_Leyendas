@@ -24,7 +24,7 @@ app.use(express.static(__dirname+'/public'));
 app.use("/", require("./router/rutas"));
 app.use("/campeones", require("./router/campeones"));
 app.use("/skins", require("./router/skins"));
-app.use("/modos", require("./router/modo"));
+app.use("/modos", require("./router/modos"));
 app.use("/minileyendas", require("./router/minileyendas"));
 app.use("/builds", require("./router/build"));
 app.use("/items", require("./router/items"));

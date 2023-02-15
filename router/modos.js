@@ -5,7 +5,7 @@ const Modo = require('../models/Modo');
 router.get('/', async (req, res) => {
     try {
         const arrayModoDB = await Modo.find();
-        res.render("modo", {
+        res.render("modos", {
             arrayModo: arrayModoDB
         })
     } catch (error) {
@@ -26,18 +26,35 @@ router.post('/', async (req, res) => {
         console.log('error', error)
     }
 })
-router.get('/:id', async(req, res) => { 
+router.get('/:id/editar', async(req, res) => { 
     const id = req.params.id
     try {
         const modoDB = await Modo.findOne({ _id: id })
         console.log(modoDB)
-        res.render('detalle', {
-            Modo:modoDB,
+        res.render('detalleModo', {
+            modo:modoDB,
             error: false
         })
     } catch (error) { 
         console.log('Se ha producido un error', error)
-        res.render('detalle', { 
+        res.render('detalleModo', { 
+            error: true,
+            mensaje: 'Modo no encontrado!'
+        })
+    }
+})
+router.get('/:id/:nombre', async(req, res) => { 
+    const id = req.params.id
+    try {
+        const modoDB = await Modo.findOne({ _id: id })
+        console.log(modoDB)
+        res.render('modo', {
+            modo:modoDB,
+            error: false
+        })
+    } catch (error) { 
+        console.log('Se ha producido un error', error)
+        res.render('modo', { 
             error: true,
             mensaje: 'Modo no encontrado!'
         })
