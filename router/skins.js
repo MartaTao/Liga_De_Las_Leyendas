@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
         console.error(error)
     }
 })
-router.get('/crear', (req, res) => {
-    res.render('crear'); 
+router.get('/crearSkin', (req, res) => {
+    res.render('crearSkin'); 
 })
 router.post('/', async (req, res) => {
     const body = req.body
@@ -26,18 +26,18 @@ router.post('/', async (req, res) => {
         console.log('error', error)
     }
 })
-router.get('/:id', async(req, res) => { 
+router.get('/:id/editar', async(req, res) => { 
     const id = req.params.id
     try {
         const skinsDB = await Skins.findOne({ _id: id })
         console.log(skinsDB) 
-        res.render('detalle', { 
-            Skins:skinsDB,
+        res.render('detalleSkin', { 
+            skin:skinsDB,
             error: false
         })
     } catch (error) {
         console.log('Se ha producido un error', error)
-        res.render('detalle', {
+        res.render('detalleSkin', {
             error: true,
             mensaje: 'Campeon no encontrado!'
         })

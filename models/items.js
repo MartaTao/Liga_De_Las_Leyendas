@@ -5,7 +5,8 @@ const itemsSchema = new Schema({
     Nombre: String,
     Tier: String,
     Precio: String,
-    MiniComponentes: String
+    MiniComponentes: String,
+    Img: String
 })
 
 //Creamos el modelo

@@ -13,8 +13,8 @@ router.get('/', async (req, res) => {
         console.error(error)
     }
 })
-router.get('/crear', (req, res) => {
-    res.render('crear'); 
+router.get('/crearItem', (req, res) => {
+    res.render('crearItem'); 
 })
 router.post('/', async (req, res) => {
     const body = req.body 
@@ -32,13 +32,13 @@ router.get('/:id', async(req, res) => {
     try {
         const itemsDB = await Items.findOne({ _id: id }) 
         console.log(itemsDB)
-        res.render('detalle', { 
+        res.render('detalleItem', { 
             items:itemsDB,
             error: false
         })
     } catch (error) { 
         console.log('Se ha producido un error', error)
-        res.render('detalle', { 
+        res.render('detalleItem', { 
             error: true,
             mensaje: 'items no encontrado!'
         })
@@ -71,7 +71,7 @@ router.put('/:id', async (req, res) => {
     console.log(id)
     console.log('body', body)
     try {
-        const itemsDB = await items.findByIdAndUpdate(
+        const itemsDB = await Items.findByIdAndUpdate(
             id, body, { useFindAndModify: false }
         )
         console.log(itemsDB)

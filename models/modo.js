@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const modoSchema = new Schema({
     Nombre: String,
     NumJugadores: String,
-    Descripcion: String
+    Descripcion: String,
+    Img: String
 })
 
 //Creamos el modelo
