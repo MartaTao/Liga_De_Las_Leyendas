@@ -13,45 +13,45 @@ router.get('/', async (req, res) => {
     }
 })
 router.get('/crearCampeon', (req, res) => {
-    res.render('crearCampeon'); 
+    res.render('crearCampeon');
 })
 router.post('/', async (req, res) => {
-    const body = req.body 
+    const body = req.body
     try {
-        const campeonesDB = new Campeones(body) 
+        const campeonesDB = new Campeones(body)
         await campeonesDB.save()
-        res.redirect('/campeones') 
+        res.redirect('/campeones')
     } catch (error) {
         console.log('error', error)
     }
 })
-router.get('/:id/editar', async(req, res) => { 
-    const id = req.params.id 
+router.get('/:id/editar', async (req, res) => {
+    const id = req.params.id
     try {
-        const campeonesDB = await Campeones.findOne({ _id: id }) 
-        res.render('detalleCampeon', { 
-            campeones:campeonesDB,
+        const campeonesDB = await Campeones.findOne({ _id: id })
+        res.render('detalleCampeon', {
+            campeones: campeonesDB,
             error: false
         })
-    } catch (error) { 
+    } catch (error) {
         console.log('Se ha producido un error', error)
-        res.render('detalleCampeon', { 
+        res.render('detalleCampeon', {
             error: true,
             mensaje: 'Campeon no encontrado!'
         })
     }
 })
-router.get('/:id/:nombre', async(req, res) => { 
-    const id = req.params.id 
+router.get('/:id/:nombre', async (req, res) => {
+    const id = req.params.id
     try {
-        const campeonesDB = await Campeones.findOne({ _id: id }) 
-        res.render('campeon', { 
-            campeon:campeonesDB,
+        const campeonesDB = await Campeones.findOne({ _id: id })
+        res.render('campeon', {
+            campeon: campeonesDB,
             error: false
         })
-    } catch (error) { 
+    } catch (error) {
         console.log('Se ha producido un error', error)
-        res.render('campeon', { 
+        res.render('campeon', {
             error: true,
             mensaje: 'Campeon no encontrado!'
         })
@@ -63,7 +63,7 @@ router.delete('/:id', async (req, res) => {
     try {
         const campeonesDB = await Campeones.findByIdAndDelete({ _id: id });
         if (!campeonesDB) {
-            res.json({ 
+            res.json({
                 estado: false,
                 mensaje: 'No se puede eliminar el Campeon.'
             })
@@ -72,7 +72,7 @@ router.delete('/:id', async (req, res) => {
                 estado: true,
                 mensaje: 'Campeon eliminado.'
             })
-        } 
+        }
     } catch (error) {
         console.log(error)
     }

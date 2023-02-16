@@ -9,18 +9,19 @@
                 <% } %>
                     <% if (!error) { %>
                         <form id="editar" data-id="<%= campeones.id %>">
-                            <input type="text" value="<%= campeones.Nombre %>" class="form-control my-2" name="nombre"
+                            <input type="text" value="<%= campeones.Nombre %>" class="form-control my-2" name="Nombre"
                                 id="nombreInput">
-                                <input type="text" value="<%= campeones.FechaSalida %>" class="form-control my-2" name="fechasalida"
+                                <input type="text" value="<%= campeones.Img %>"  class="form-control my-2" name="Img">
+                                <input type="text" value="<%= campeones.FechaSalida %>" class="form-control my-2" name="FechaSalida"
                                 id="bioInput">
-                            <input type="text" value="<%= campeones.Habilidades %>" class="form-control my-2" name="habilidades"
+                            <input type="text" value="<%= campeones.Habilidades %>" class="form-control my-2" name="Habilidades"
                                 id="regionInput">
-                            <input type="text" value="<%= campeones.Lore %>" class="form-control my-2" name="lore"
+                            <input type="text" value="<%= campeones.Lore %>" class="form-control my-2" name="Lore"
                                 id="ciudadInput">
-                            <input type="text" value="<%= campeones.Precio %>" class="form-control my-2" name="precio"
+                            <input type="text" value="<%= campeones.Precio %>" class="form-control my-2" name="Precio"
                                 id="numGymInput">
                             <input type="text" value="<%= campeones.Region %>" class="form-control my-2"
-                                name="region" id="lista_PokemonInput">
+                                name="Region" id="lista_PokemonInput">
                             <button class="btn btn-warning btn-sm" type="submit">
                                 Editar
                             </button>
@@ -57,19 +58,20 @@
         const formEditar=document.querySelector('#editar');
         formEditar.addEventListener('submit', async (e) => {
             e.preventDefault()
-            const nombre = formEditar.elements['nombre'].value
-            const fechasalida= formEditar.elements['fechasalida'].value
-            const habilidades = formEditar.elements['habilidades'].value
-            const lore = formEditar.elements['lore'].value
-            const precio = formEditar.elements['precio'].value
-            const region = formEditar.elements['region'].value
+            const Nombre = formEditar.elements['Nombre'].value
+            const Img = formEditar.elements['Img'].value
+            const FechaSalida= formEditar.elements['FechaSalida'].value
+            const Habilidades = formEditar.elements['Habilidades'].value
+            const Lore = formEditar.elements['Lore'].value
+            const Precio = formEditar.elements['Precio'].value
+            const Region = formEditar.elements['Region'].value
             const id = formEditar.dataset.id
             const data = await fetch(`/campeones/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ nombre, fechasalida, habilidades, lore, precio, region })
+                body: JSON.stringify({ Nombre, Img,FechaSalida, Habilidades, Lore, Precio, Region })
             })
             const res = await data.json()
             if (res.estado) {
