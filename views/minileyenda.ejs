@@ -1,9 +1,19 @@
-<%- include("templates/cabecera.ejs", {cabecera:'Minileyenda'}) %>
+<%- include("templates/cabecera.ejs") %>
+<title>Minileyenda</title>
+</head>
+<body>
     <div class="container">
         <h1><%= miniLeyendas.Nombre %></h1>
         <div class="row">
             <h2>Tier</h2>
             <div class="col-12"><%= miniLeyendas.Tier %></p></div>
+        </div>
+        <div class="row">
+            <div class="col-6"><img src="<%= miniLeyendas.Img %>" width="100%"></div>
+        </div>
+        <div class="row">
+            <h2>Vídeo ingame</h2>
+            <div class="col-12"><iframe src="<%= miniLeyendas.Video %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
         </div>
         <div class="row">
             <h2>Precio</h2>

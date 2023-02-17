@@ -43,6 +43,23 @@ router.get('/:id/editar', async(req, res) => {
         })
     }
 })
+router.get('/:id/:nombre', async(req, res) => { 
+    const id = req.params.id
+    try {
+        const skinsDB = await Skins.findOne({ _id: id })
+        console.log(skinsDB) 
+        res.render('skin', { 
+            skin:skinsDB,
+            error: false
+        })
+    } catch (error) {
+        console.log('Se ha producido un error', error)
+        res.render('skin', {
+            error: true,
+            mensaje: 'Campeon no encontrado!'
+        })
+    }
+})
 router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     console.log('id desde backend', id)

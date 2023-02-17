@@ -1,4 +1,11 @@
-<%- include("templates/cabecera.ejs", {cabecera:'Campeon'}) %>
+<%- include("templates/cabecera.ejs") %>
+<link rel="stylesheet" href="/css/campeon_Styles.css">
+<title><%= campeon.Nombre %></title>
+</head>
+<body>
+<div class="header">
+    <img src="<%= campeon.Img%>">
+</div>
     <div class="container">
         <h1>
             <%= campeon.Nombre %>

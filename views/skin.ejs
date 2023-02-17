@@ -1,0 +1,40 @@
+<%- include("templates/cabecera.ejs") %>
+    <title>
+        <%= skin.Nombre %>
+    </title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>
+                <%= skin.Nombre %>
+            </h1>
+            <div class="row">
+                <h2>Universo</h2>
+                <div class="col-12">
+                    <p>
+                        <%= skin.Universo%>
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <p>
+                            <img src="<%= skin.Img%>" width="100%">
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Tier</h2>
+                <div class="col-12">
+                    <%= skin.Tier %>
+                </div>
+            </div>
+            <div class="row">
+                <h2>Precio</h2>
+                <div class="col-12">
+                    <%= skin.Precio %>
+                </div>
+            </div>
+            <a class="btn btn-info" href="/">Volver</a>
+        </div>
+        <%- include("templates/footer.ejs") %>
