@@ -1,62 +1,62 @@
 const express = require('express');
 const router = express.Router();
-const Build = require('../models/build');
+const Modo = require('../models/Modo');
 
 router.get('/', async (req, res) => {
     try {
-        const arrayBuildDB = await Build.find();
-        res.render("builds", {
-            arrayBuild: arrayBuildDB
+        const arrayModoDB = await Modo.find();
+        res.render("modos", {
+            arrayModo: arrayModoDB
         })
     } catch (error) {
         console.error(error)
     }
 })
-router.get('/crearBuild', (req, res) => {
-    res.render('crearBuild'); 
+router.get('/crearModo', (req, res) => {
+    res.render('crearModo'); 
 })
 router.post('/', async (req, res) => {
     const body = req.body 
-    console.log(body) 
+    console.log(body)
     try {
-        const buildDB = new Build(body) 
-        await buildDB.save()
-        res.redirect('/builds') 
+        const modoDB = new Modo(body)
+        await modoDB.save() 
+        res.redirect('/modos') 
     } catch (error) {
         console.log('error', error)
     }
 })
 router.get('/:id/editar', async(req, res) => { 
-    const id = req.params.id 
+    const id = req.params.id
     try {
-        const buildDB = await Build.findOne({ _id: id }) 
-        console.log(buildDB)
-        res.render('detalleBuild', { 
-            build:buildDB,
+        const modoDB = await Modo.findOne({ _id: id })
+        console.log(modoDB)
+        res.render('detalleModo', {
+            modo:modoDB,
             error: false
         })
     } catch (error) { 
         console.log('Se ha producido un error', error)
-        res.render('detalleBuild', { 
+        res.render('detalleModo', { 
             error: true,
-            mensaje: 'Build no encontrada!'
+            mensaje: 'Modo no encontrado!'
         })
     }
 })
 router.get('/:id/:nombre', async(req, res) => { 
-    const id = req.params.id 
+    const id = req.params.id
     try {
-        const buildDB = await Build.findOne({ _id: id }) 
-        console.log(buildDB)
-        res.render('build', { 
-            build:buildDB,
+        const modoDB = await Modo.findOne({ _id: id })
+        console.log(modoDB)
+        res.render('modo', {
+            modo:modoDB,
             error: false
         })
     } catch (error) { 
         console.log('Se ha producido un error', error)
-        res.render('build', { 
+        res.render('modo', { 
             error: true,
-            mensaje: 'Build no encontrada!'
+            mensaje: 'Modo no encontrado!'
         })
     }
 })
@@ -64,17 +64,19 @@ router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     console.log('id desde backend', id)
     try {
-        const buildDB = await Build.findByIdAndDelete({ _id: id });
-        console.log(buildDB)
-        if (!buildDB) {
+
+        const modoDB = await Modo.findByIdAndDelete({ _id: id });
+        console.log(modoDB)
+
+        if (!modoDB) {
             res.json({ 
                 estado: false,
-                mensaje: 'No se puede eliminar la Build.'
+                mensaje: 'No se puede eliminar el Modo.'
             })
         } else {
             res.json({
                 estado: true,
-                mensaje: 'Build eliminado.'
+                mensaje: 'Modo eliminado.'
             })
         } 
     } catch (error) {
@@ -87,19 +89,19 @@ router.put('/:id', async (req, res) => {
     console.log(id)
     console.log('body', body)
     try {
-        const buildDB = await Build.findByIdAndUpdate(
+        const modoDB = await Modo.findByIdAndUpdate(
             id, body, { useFindAndModify: false }
         )
-        console.log(buildDB)
+        console.log(modoDB)
         res.json({
             estado: true,
-            mensaje: 'Build editada'
+            mensaje: 'Modo editado'
         })
     } catch (error) {
         console.log(error)
         res.json({
             estado: false,
-            mensaje: 'Problema al editar la Build'
+            mensaje: 'Problema al editar el Modo'
         })
     }
 })

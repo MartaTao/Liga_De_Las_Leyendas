@@ -10,6 +10,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Imágen  </th>
                     <th scope="col">Fecha de salida</th>
                     <th scope="col">Habilidades</th>
                     <th scope="col">Lore</th>
@@ -30,6 +31,9 @@
                                 <%= campeones.Nombre %>
                             </td>
                             <td>
+                                <img src="<%= campeones.Img%>" width="100%">
+                            </td>
+                            <td>
                                 <%= campeones.FechaSalida %>
                             </td>
                             <td>
@@ -45,7 +49,7 @@
                                 <%= campeones.Region %>
                             </td>
                             <td>
-                                <a class="btn btn-warning btn-sm" href="campeones/<%= campeones.id %>">Editar/Eliminar</a>
+                                <a class="btn btn-warning btn-sm" href="campeones/<%= campeones.id %>/editar">Editar/Eliminar</a>
                             </td>
                         </tr>
                         <% }) %>

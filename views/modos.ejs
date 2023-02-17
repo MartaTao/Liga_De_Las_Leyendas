@@ -1,8 +1,8 @@
-<%- include("templates/cabecera.ejs", {cabecera:'Items'}) %>
+<%- include("templates/cabecera.ejs", {cabecera:'Modo'}) %>
     <div class="container">
-        <h1>Items</h1>
+        <h1>Modo</h1>
         <div class="row">
-            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/items/crearItem">Crear una nueva Items</a></div>
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/modos/crearModo">Crear un nuevo campeon</a></div>
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/menu">Volver</a></div>
         </div>
         <table class="table">
@@ -11,38 +11,34 @@
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Imágen  </th>
-                    <th scope="col">Tier</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Mini componentes</th>
+                    <th scope="col">NumJugadores</th>
+                    <th scope="col">Descripcion</th>
                     <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
-                <% if (arrayItems.length> 0) { %>
+                <% if (arrayModo.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
-                    <% arrayItems.forEach(items=> { %>
+                    <% arrayModo.forEach(modo => { %>
                         <tr>
                             <th scope="row">
-                                <%= items.id %>
+                                <%= modo.id %>
                             </th>
                             <td>
-                                <%= items.Nombre %>
+                                <%= modo.Nombre %>
                             </td>
                             <td>
-                                <img src="<%= items.Img%>" width="100%">
+                                <img src="<%= modo.Img%>" width="100%">
                             </td>
                             <td>
-                                <%= items.Tier %>
+                                <%= modo.NumJugadores %>
                             </td>
                             <td>
-                                <%= items.Precio %>
+                                <%= modo.Descripcion %>
                             </td>
                             <td>
-                                <%= items.MiniComponentes%>
+                                <a class="btn btn-warning btn-sm" href="modos/<%= modo.id %>/editar">Editar/Eliminar</a>
                             </td>
-                            <td>
-                                <a class="btn btn-warning btn-sm" href="items/<%= items.id %>">Editar/Eliminar</a>
-                            </td>                                 
                         </tr>
                         <% }) %>
                             <% } %>

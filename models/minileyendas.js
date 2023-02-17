@@ -5,7 +5,8 @@ const minileyendasSchema = new Schema({
     Nombre: String,
     Tier: String,
     Precio: String ,
-    Fecha: String
+    Fecha: String,
+    Img: String
 })
 
 //Creamos el modelo

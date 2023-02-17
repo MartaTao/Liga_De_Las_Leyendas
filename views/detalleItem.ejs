@@ -1,33 +1,29 @@
-<%- include("templates/cabecera", {cabecera: 'Información del campeon' }) %>
+<%- include("templates/cabecera", {cabecera: 'Información del item' }) %>
     <div class="container">
-        <h1>Detalles del campeon</h1>
+        <h1>Detalles del item</h1>
         <% if (error) { %>
             <%= mensaje %>
-                <a href="/campeones" class="btn btn-dark btn-block my-2">
+                <a href="/items" class="btn btn-dark btn-block my-2">
                     Volver
                 </a>
                 <% } %>
                     <% if (!error) { %>
-                        <form id="editar" data-id="<%= campeones.id %>">
-                            <input type="text" value="<%= campeones.Nombre %>" class="form-control my-2" name="Nombre"
+                        <form id="editar" data-id="<%= items.id %>">
+                            <input type="text" value="<%= items.Nombre %>" class="form-control my-2" name="Nombre"
                                 id="nombreInput">
-                                <input type="text" value="<%= campeones.Img %>"  class="form-control my-2" name="Img">
-                                <input type="text" value="<%= campeones.FechaSalida %>" class="form-control my-2" name="FechaSalida"
+                                <input type="text" value="<%= items.Img %>"  class="form-control my-2" name="Img">
+                                <input type="text" value="<%= items.Tier %>" class="form-control my-2" name="Tier"
                                 id="bioInput">
-                            <input type="text" value="<%= campeones.Habilidades %>" class="form-control my-2" name="Habilidades"
-                                id="regionInput">
-                            <input type="text" value="<%= campeones.Lore %>" class="form-control my-2" name="Lore"
-                                id="ciudadInput">
-                            <input type="text" value="<%= campeones.Precio %>" class="form-control my-2" name="Precio"
+                            <input type="text" value="<%= items.Precio %>" class="form-control my-2" name="Precio"
                                 id="numGymInput">
-                            <input type="text" value="<%= campeones.Region %>" class="form-control my-2"
-                                name="Region" id="lista_PokemonInput">
+                                <input type="text" value="<%= items.MiniComponentes %>" class="form-control my-2" name="MiniComponentes"
+                                id="ciudadInput">
                             <button class="btn btn-warning btn-sm" type="submit">
                                 Editar
                             </button>
                         </form>
                         <hr>
-                        <button class="btn btn-danger btn-sm" data-id="<%= campeones.id %>">
+                        <button class="btn btn-danger btn-sm" data-id="<%= items.id %>">
                             Eliminar
                         </button>
                         <% } %>
@@ -40,13 +36,13 @@
         btnEliminar.addEventListener('click', async () => {
             console.log(btnEliminar.dataset.id)
             try {
-                const data = await fetch(`/campeones/${btnEliminar.dataset.id}`, {
+                const data = await fetch(`/items/${btnEliminar.dataset.id}`, {
                     method: 'delete'
                 })
                 const res = await data.json()
                 console.log(res)
                 if (res.estado) {
-                    window.location.href = '/campeones'
+                    window.location.href = '/items'
                 } else {
                     console.log(res)
                 }
@@ -60,22 +56,20 @@
             e.preventDefault()
             const Nombre = formEditar.elements['Nombre'].value
             const Img = formEditar.elements['Img'].value
-            const FechaSalida= formEditar.elements['FechaSalida'].value
-            const Habilidades = formEditar.elements['Habilidades'].value
-            const Lore = formEditar.elements['Lore'].value
+            const Tier= formEditar.elements['Tier'].value
             const Precio = formEditar.elements['Precio'].value
-            const Region = formEditar.elements['Region'].value
+            const MiniComponentes = formEditar.elements['MiniComponentes'].value
             const id = formEditar.dataset.id
-            const data = await fetch(`/campeones/${id}`, {
+            const data = await fetch(`/items/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ Nombre, Img,FechaSalida, Habilidades, Lore, Precio, Region })
+                body: JSON.stringify({ Nombre, Img,Tier, Precio, MiniComponentes })
             })
             const res = await data.json()
             if (res.estado) {
-                window.location.href = '/campeones'
+                window.location.href = '/items'
             } else {
                 console.log(res)
             }
