@@ -8,7 +8,8 @@ const campeonesSchema = new Schema({
     Lore: String,
     Precio: String,
     Region:String,
-    Img:String
+    Img:String,
+    Video:String
 })
 
 //Creamos el modelo

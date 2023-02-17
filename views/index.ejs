@@ -1,102 +1,108 @@
-<%- include("templates/cabecera.ejs", {cabecera:'Inicio'}) %>
-    <div class="container">
-        <h1>Inicio</h1>
-        <p>Bienvenido a la base de datos del popular juego Leage of Legends</p>
-        <div class="champs">
-            <h2>Campeones</h2>
-            <div class="row">
-                <% if (arrayCampeones.length> 0) { %>
-                    <!--Haremos el foreach para recorrer el array-->
-                    <% arrayCampeones.forEach(campeones=> { %>
-                        <div class="row">
-                            <div class="col-lg-2 col-md-3 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img src="....">
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="campeones/<%= campeones.id %>/<%= campeones.Nombre %>">
-                                            <%= campeones.Nombre %>
-                                        </a>
-                                    </div>
-                                </div>
+<%- include("templates/cabecera.ejs") %>
+    <title>Inicio</title>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <h1>Inicio</h1>
+            <p>Bienvenido a la base de datos del popular juego Leage of Legends</p>
+            <div class="champs">
+                <h2>Campeones</h2>
+                <div class="row aling-items-center">
+                    <% if (arrayCampeones.length> 0) { %>
+                        <!--Haremos el foreach para recorrer el array-->
+                        <% arrayCampeones.forEach(campeones=> { %>
+
+                            <div class="col-6">
+                                <img src="<%= campeones.Img %>" width="100%">
                             </div>
-                        </div>
-                        <% }) %>
-                            <% } %>
+                            <div class="col-6">
+                                <a href="campeones/<%= campeones.id %>/<%= campeones.Nombre %>">
+                                    <%= campeones.Nombre %>
+                                </a>
+                            </div>
+
+                            <% }) %>
+                                <% } %>
+                </div>
             </div>
-        </div>
-        <div class="build">
-            <h2>Builds</h2>
-            <div class="row">
+            <div class="build">
+                <h2>Builds</h2>
+
                 <% if (arrayBuild.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
                     <% arrayBuild.forEach(build=> { %>
                         <div class="row">
-                            <div class="col-lg-2 col-md-3 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img src="....">
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="builds/<%= build.id %>/<%= build.Nombre %>">
-                                            <%= build.Nombre %>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="col-12">
+                                <a href="builds/<%= build.id %>/<%= build.Nombre %>">
+                                    <%= build.Nombre %>
+                                </a>
                             </div>
                         </div>
                         <% }) %>
                             <% } %>
+
             </div>
-        </div>
-        <div class="modos">
-            <h2>Modos</h2>
-            <div class="row">
+            <div class="modos">
+                <h2>Modos</h2>
+
                 <% if (arrayModo.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
                     <% arrayModo.forEach(modo=> { %>
                         <div class="row">
-                            <div class="col-lg-2 col-md-3 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img src="....">
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="modos/<%= modo.id %>/<%= modo.Nombre %>">
-                                            <%= modo.Nombre %>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="col-6">
+                                <img src="<%= modo.Img%>" width="100%">
                             </div>
+                            <div class="col-6">
+                                <a href="modos/<%= modo.id %>/<%= modo.Nombre %>">
+                                    <%= modo.Nombre %>
+                                </a>
+                            </div>
+
                         </div>
                         <% }) %>
                             <% } %>
+
             </div>
-        </div>
-        <div class="minileyendas">
-            <h2>Minileyendas</h2>
-            <div class="row">
+            <div class="minileyendas">
+                <h2>Minileyendas</h2>
+
                 <% if (arrayMinileyendas.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
                     <% arrayMinileyendas.forEach(minileyenda=> { %>
                         <div class="row">
-                            <div class="col-lg-2 col-md-3 col-sm-12">
-                                <div class="row">
-                                    <div class="col-6">
-                                        <img src="....">
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="minileyendas/<%= minileyenda.id %>/<%= minileyenda.Nombre %>">
-                                            <%= minileyenda.Nombre %>
-                                        </a>
-                                    </div>
-                                </div>
+                            <div class="col-6">
+                                <img src="<%= minileyenda.Img %>" width="100%">
+                            </div>
+                            <div class="col-6">
+                                <a href="minileyendas/<%= minileyenda.id %>/<%= minileyenda.Nombre %>">
+                                    <%= minileyenda.Nombre %>
+                                </a>
+                            </div>
+                        </div>
+                        <% }) %>
+                            <% } %>
+
+            </div>
+            <div class="skins">
+                <h2>Skins</h2>
+
+                <% if (arraySkins.length> 0) { %>
+                    <!--Haremos el foreach para recorrer el array-->
+                    <% arraySkins.forEach(skin=> { %>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-3 col-sm-12">
+
+                                <img src="<%=skin.Img%>" width="100%">
+                            </div>
+                            <div class="col-lg-6 col-md-3 col-sm-12">
+                                <a href="skins/<%= skin.id %>/<%= skin.Nombre %>">
+                                    <%= skin.Nombre %>
+                                </a>
                             </div>
                         </div>
                         <% }) %>
                             <% } %>
             </div>
         </div>
-    </div>
-    <%- include("templates/footer.ejs") %>
+        <%- include("templates/footer.ejs") %>
