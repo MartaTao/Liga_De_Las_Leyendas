@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Campeones = require('../models/campeones');
-
+const Skins=require('../models/skins');
 router.get('/', async (req, res) => {
     try {
         const arrayCampeonesDB = await Campeones.find();
@@ -45,8 +45,12 @@ router.get('/:id/:nombre', async (req, res) => {
     const id = req.params.id
     try {
         const campeonesDB = await Campeones.findOne({ _id: id })
+        const campeon=campeonesDB.Nombre;
+        const arraySkinsDB= await Skins.find({Campeon:campeon})
+        console.log(arraySkinsDB);
         res.render('campeon', {
             campeon: campeonesDB,
+            arraySkins: arraySkinsDB,
             error: false
         })
     } catch (error) {
