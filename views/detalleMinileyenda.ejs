@@ -1,0 +1,78 @@
+<%- include("templates/cabecera", {cabecera: 'Información de minileyenda' }) %>
+    <div class="container">
+        <h1>Detalles de minileyenda</h1>
+        <% if (error) { %>
+            <%= mensaje %>
+                <a href="/miniLeyendas" class="btn btn-dark btn-block my-2">
+                    Volver
+                </a>
+                <% } %>
+                    <% if (!error) { %>
+                        <form id="editar" data-id="<%= miniLeyendas.id %>">
+                            <input type="text" value="<%= miniLeyendas.Nombre %>" class="form-control my-2"
+                                name="Nombre" id="nombreInput">
+                            <input type="text" value="<%= miniLeyendas.Img %>" class="form-control my-2" name="Img">
+                            <input type="text" value="<%= miniLeyendas.Fecha %>" class="form-control my-2" name="Fecha"
+                                id="bioInput">
+                            <input type="text" value="<%= miniLeyendas.Tier %>" class="form-control my-2" name="Tier"
+                                id="regionInput">
+                            <input type="text" value="<%= miniLeyendas.Precio %>" class="form-control my-2"
+                                name="Precio" id="numGymInput">
+                            <button class="btn btn-warning btn-sm" type="submit">
+                                Editar
+                            </button>
+                        </form>
+                        <hr>
+                        <button class="btn btn-danger btn-sm" data-id="<%= miniLeyendas.id %>">
+                            Eliminar
+                        </button>
+                        <% } %>
+
+    </div>
+
+    <script>
+        //Eliminar
+        const btnEliminar = document.querySelector('.btn-danger')
+        btnEliminar.addEventListener('click', async () => {
+            console.log(btnEliminar.dataset.id)
+            try {
+                const data = await fetch(`/minileyendas/${btnEliminar.dataset.id}`, {
+                    method: 'delete'
+                })
+                const res = await data.json()
+                console.log(res)
+                if (res.estado) {
+                    window.location.href = '/minileyendas'
+                } else {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+        //Editar
+        const formEditar = document.querySelector('#editar');
+        formEditar.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const Nombre = formEditar.elements['Nombre'].value
+            const Img = formEditar.elements['Img'].value
+            const Fecha = formEditar.elements['Fecha'].value
+            const Tier = formEditar.elements['Tier'].value
+            const Precio = formEditar.elements['Precio'].value
+            const id = formEditar.dataset.id
+            const data = await fetch(`/minileyendas/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ Nombre, Img, Fecha, Tier, Precio })
+            })
+            const res = await data.json()
+            if (res.estado) {
+                window.location.href = '/minileyendas'
+            } else {
+                console.log(res)
+            }
+        })
+    </script>
+    <%- include("templates/footer") %>

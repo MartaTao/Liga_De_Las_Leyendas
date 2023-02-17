@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
         console.error(error)
     }
 })
-router.get('/crear', (req, res) => {
-    res.render('crear'); 
+router.get('/crearModo', (req, res) => {
+    res.render('crearModo'); 
 })
 router.post('/', async (req, res) => {
     const body = req.body 
@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
     try {
         const modoDB = new Modo(body)
         await modoDB.save() 
-        res.redirect('/modo') 
+        res.redirect('/modos') 
     } catch (error) {
         console.log('error', error)
     }

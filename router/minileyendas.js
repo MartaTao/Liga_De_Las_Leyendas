@@ -12,8 +12,8 @@ router.get('/', async (req, res) => {
         console.error(error)
     }
 })
-router.get('/crear', (req, res) => {
-    res.render('crear'); 
+router.get('/crearMiniLeyenda', (req, res) => {
+    res.render('crearMiniLeyenda'); 
 })
 router.post('/', async (req, res) => {
     const body = req.body 

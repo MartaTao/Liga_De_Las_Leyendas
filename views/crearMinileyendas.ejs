@@ -1,0 +1,18 @@
+
+<%- include("templates/cabecera.ejs", {cabecera: 'Nueva Minileyenda' }) %>
+
+<div class="container">
+    <div><a class="btn btn-success btn-block my-4" href="/">Volver</a></div>
+    <h1>Añadir nuevo campeón</h1>
+    <form action="/minileyendas" class="my-2" method="POST">
+        <input type="text" placeholder="Nombre de minileyendas" class="form-control my-2" name="Nombre">
+        <input type="text" placeholder="Url de la imágen" class="form-control my-2" name="Img">
+        <input type="text" placeholder="tier" class="form-control my-2" name="Tier">
+        <input type="text" placeholder="precio" class="form-control my-2" name="Precio">
+        <input type="text" placeholder="Fecha" class="form-control my-2" name="Fecha">
+        <button type="submit" class="btn btn-dark btn-block">
+            Agregar
+        </button>
+    </form>
+</div>
+<%- include("templates/footer") %>

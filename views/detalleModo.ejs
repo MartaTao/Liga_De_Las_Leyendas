@@ -1,0 +1,75 @@
+<%- include("templates/cabecera", {cabecera: 'Información de modo' }) %>
+    <div class="container">
+        <h1>Detalles de modo</h1>
+        <% if (error) { %>
+            <%= mensaje %>
+                <a href="/modos" class="btn btn-dark btn-block my-2">
+                    Volver
+                </a>
+                <% } %>
+                    <% if (!error) { %>
+                        <form id="editar" data-id="<%= modo.id %>">
+                            <input type="text" value="<%= modo.Nombre %>" class="form-control my-2"
+                                name="Nombre" id="nombreInput">
+                            <input type="text" value="<%= modo.Img %>" class="form-control my-2" name="Img">
+                            <input type="text" value="<%= modo.NumJugadores %>" class="form-control my-2" name="NumJugadores"
+                                id="bioInput">
+                            <input type="text" value="<%= modo.Descripcion %>" class="form-control my-2" name="Descripcion"
+                                id="regionInput">
+                            <button class="btn btn-warning btn-sm" type="submit">
+                                Editar
+                            </button>
+                        </form>
+                        <hr>
+                        <button class="btn btn-danger btn-sm" data-id="<%= modo.id %>">
+                            Eliminar
+                        </button>
+                        <% } %>
+
+    </div>
+
+    <script>
+        //Eliminar
+        const btnEliminar = document.querySelector('.btn-danger')
+        btnEliminar.addEventListener('click', async () => {
+            console.log(btnEliminar.dataset.id)
+            try {
+                const data = await fetch(`/modos/${btnEliminar.dataset.id}`, {
+                    method: 'delete'
+                })
+                const res = await data.json()
+                console.log(res)
+                if (res.estado) {
+                    window.location.href = '/modos'
+                } else {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+        //Editar
+        const formEditar = document.querySelector('#editar');
+        formEditar.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const Nombre = formEditar.elements['Nombre'].value
+            const Img = formEditar.elements['Img'].value
+            const NumJugadores = formEditar.elements['NumJugadores'].value
+            const Descripcion = formEditar.elements['Descripcion'].value
+            const id = formEditar.dataset.id
+            const data = await fetch(`/modos/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ Nombre, Img, NumJugadores, Descripcion })
+            })
+            const res = await data.json()
+            if (res.estado) {
+                window.location.href = '/modos'
+            } else {
+                console.log(res)
+            }
+        })
+    </script>
+    <%- include("templates/footer") %>

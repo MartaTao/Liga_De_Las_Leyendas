@@ -1,0 +1,73 @@
+<%- include("templates/cabecera", {cabecera: 'Información de la build' }) %>
+    <div class="container">
+        <h1>Detalles de la Build</h1>
+        <% if (error) { %>
+            <%= mensaje %>
+                <a href="/builds" class="btn btn-dark btn-block my-2">
+                    Volver
+                </a>
+                <% } %>
+                    <% if (!error) { %>
+                        <form id="editar" data-id="<%= build.id %>">
+                            <input type="text" value="<%= build.Nombre %>" class="form-control my-2" name="Nombre"
+                                id="nombreInput">
+                                <input type="text" value="<%= build.Objetos %>" class="form-control my-2" name="Objetos"
+                                id="ObjetosInput">
+                            <input type="text" value="<%= build.PrecioTotal %>" class="form-control my-2" name="PrecioTotal"
+                                id="PrecioTotalInput">
+                            <button class="btn btn-warning btn-sm" type="submit">
+                                Editar
+                            </button>
+                        </form>
+                        <hr>
+                        <button class="btn btn-danger btn-sm" data-id="<%= build.id %>">
+                            Eliminar
+                        </button>
+                        <% } %>
+
+    </div>
+
+    <script>
+        //Eliminar
+        const btnEliminar = document.querySelector('.btn-danger')
+        btnEliminar.addEventListener('click', async () => {
+            console.log(btnEliminar.dataset.id)
+            try {
+                const data = await fetch(`/builds/${btnEliminar.dataset.id}`, {
+                    method: 'delete'
+                })
+                const res = await data.json()
+                console.log(res)
+                if (res.estado) {
+                    window.location.href = '/builds'
+                } else {
+                    console.log(res)
+                }
+            } catch (error) {
+                console.log(error)
+            }
+        })
+        //Editar
+        const formEditar=document.querySelector('#editar');
+        formEditar.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const Nombre = formEditar.elements['Nombre'].value
+            const Objetos = formEditar.elements['Objetos'].value
+            const PrecioTotal= formEditar.elements['PrecioTotal'].value
+            const id = formEditar.dataset.id
+            const data = await fetch(`/builds/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ Nombre, Objetos,PrecioTotal })
+            })
+            const res = await data.json()
+            if (res.estado) {
+                window.location.href = '/builds'
+            } else {
+                console.log(res)
+            }
+        })
+    </script>
+    <%- include("templates/footer") %>

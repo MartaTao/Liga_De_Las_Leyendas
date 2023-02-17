@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Minileyendas</h1>
         <div class="row">
-            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/modo/crear">Crear una nueva Minileyendas</a></div>
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/minileyendas/crearMinileyenda">Crear una nueva Minileyendas</a></div>
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/menu">Volver</a></div>
         </div>
         <table class="table">
@@ -10,6 +10,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Imágen  </th>
                     <th scope="col">Tier</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Fecha</th>
@@ -28,6 +29,9 @@
                                 <%= miniLeyendas.Nombre %>
                             </td>
                             <td>
+                                <img src="<%= miniLeyendas.Img%>" width="100%">
+                            </td>
+                            <td>
                                 <%= miniLeyendas.Tier %>
                             </td>
                             <td>
@@ -37,7 +41,7 @@
                                 <%= miniLeyendas.Fecha %>
                             </td>
                             <td>
-                                <a class="btn btn-warning btn-sm" href="minileyendas/<%= miniLeyendas.id %>">Editar/Eliminar</a>
+                                <a class="btn btn-warning btn-sm" href="minileyendas/<%= miniLeyendas.id %>/editar">Editar/Eliminar</a>
                             </td>
                         </tr>
                         <% }) %>

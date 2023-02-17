@@ -2,7 +2,7 @@
     <div class="container">
         <h1>Modo</h1>
         <div class="row">
-            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/modo/crear">Crear un nuevo campeon</a></div>
+            <div class="col-6"><a class="btn btn-success btn-block my-4" href="/modos/crearModo">Crear un nuevo campeon</a></div>
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/menu">Volver</a></div>
         </div>
         <table class="table">
@@ -10,6 +10,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">Imágen  </th>
                     <th scope="col">NumJugadores</th>
                     <th scope="col">Descripcion</th>
                     <th scope="col">Acción</th>
@@ -27,13 +28,16 @@
                                 <%= modo.Nombre %>
                             </td>
                             <td>
+                                <img src="<%= modo.Img%>" width="100%">
+                            </td>
+                            <td>
                                 <%= modo.NumJugadores %>
                             </td>
                             <td>
                                 <%= modo.Descripcion %>
                             </td>
                             <td>
-                                <a class="btn btn-warning btn-sm" href="modos/<%= modo.id %>">Editar/Eliminar</a>
+                                <a class="btn btn-warning btn-sm" href="modos/<%= modo.id %>/editar">Editar/Eliminar</a>
                             </td>
                         </tr>
                         <% }) %>
