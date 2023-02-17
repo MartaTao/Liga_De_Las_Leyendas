@@ -6,7 +6,8 @@ const skinsSchema = new Schema({
     Universo: String,
     Precio: String,
     Tier:String,
-    Img: String
+    Img: String,
+    Campeon:String
 })
 
 //Creamos el modelo

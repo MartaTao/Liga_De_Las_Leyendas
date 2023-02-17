@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Skins = require('../models/Skins');
+const Skins = require('../models/skins');
 
 router.get('/', async (req, res) => {
     try {
