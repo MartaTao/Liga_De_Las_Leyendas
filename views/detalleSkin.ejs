@@ -21,6 +21,8 @@
                                 id="regionInput">
                                 <input type="text" value="<%= skin.Tier %>" class="form-control my-2" name="Tier"
                                 id="regionInput">
+                            <input type="text" value="<%= skin.Video %>" class="form-control my-2"
+                                name="Video" id="lista_PokemonInput">
                             <button class="btn btn-warning btn-sm" type="submit">
                                 Editar
                             </button>
@@ -62,13 +64,14 @@
             const Universo = formEditar.elements['Universo'].value
             const Precio = formEditar.elements['Precio'].value
             const Tier = formEditar.elements['Tier'].value
+            const Video = formEditar.elements['Video'].value
             const id = formEditar.dataset.id
             const data = await fetch(`/skins/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ Nombre, Img, Universo, Precio, Tier })
+                body: JSON.stringify({ Nombre, Img, Universo, Precio, Tier, Video })
             })
             const res = await data.json()
             if (res.estado) {
