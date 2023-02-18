@@ -14,7 +14,7 @@
                         <% arrayCampeones.forEach(campeones=> { %>
 
                             <div class="col-6">
-                                <img src="<%= campeones.Img %>" width="100%">
+                                <img src="<%= campeones.Img %>" height="100vh">
                             </div>
                             <div class="col-6">
                                 <a href="campeones/<%= campeones.id %>/<%= campeones.Nombre %>">
@@ -51,7 +51,7 @@
                     <% arrayModo.forEach(modo=> { %>
                         <div class="row">
                             <div class="col-6">
-                                <img src="<%= modo.Img%>" width="100%">
+                                <img src="<%= modo.Img%>" height="300vh">
                             </div>
                             <div class="col-6">
                                 <a href="modos/<%= modo.id %>/<%= modo.Nombre %>">
@@ -72,7 +72,7 @@
                     <% arrayMinileyendas.forEach(minileyenda=> { %>
                         <div class="row">
                             <div class="col-6">
-                                <img src="<%= minileyenda.Img %>" width="100%">
+                                <img src="<%= minileyenda.Img %>" height="100vh">
                             </div>
                             <div class="col-6">
                                 <a href="minileyendas/<%= minileyenda.id %>/<%= minileyenda.Nombre %>">
@@ -93,7 +93,7 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-3 col-sm-12">
 
-                                <img src="<%=skin.Img%>" width="100%">
+                                <img src="<%=skin.Img%>" height="100vh">
                             </div>
                             <div class="col-lg-6 col-md-3 col-sm-12">
                                 <a href="skins/<%= skin.id %>/<%= skin.Nombre %>">
