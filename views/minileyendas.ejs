@@ -8,15 +8,16 @@
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/minileyendas/crearMinileyenda">Crear una nueva Minileyendas</a></div>
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/menu">Volver</a></div>
         </div>
-        <table class="table">
+        <table class="table text-info">
             <thead class="thead-dark">
-                <tr>
+                <tr >
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Imágen  </th>
                     <th scope="col">Tier</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Fecha</th>
+                    <th scope="col">Video</th>
                     <th scope="col">Acción</th>
                 </tr>
             </thead>
@@ -42,6 +43,9 @@
                             </td>
                             <td>
                                 <%= miniLeyendas.Fecha %>
+                            </td>
+                            <td>
+                                <iframe src="<%= miniLeyendas.Video %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             </td>
                             <td>
                                 <a class="btn btn-warning btn-sm" href="minileyendas/<%= miniLeyendas.id %>/editar">Editar/Eliminar</a>
