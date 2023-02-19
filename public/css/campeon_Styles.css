@@ -16,9 +16,10 @@ section {
       opacity: 1;
       filter: contrast(120%); }
 
-.header {
-  height: 175px; }
-  .header img {
-    width: 100%; }
+.header img {
+  width: 100%;
+  opacity: 0.4;
+  position: absolute;
+  display: flex; }
 
 /*# sourceMappingURL=campeon_Styles.css.map */

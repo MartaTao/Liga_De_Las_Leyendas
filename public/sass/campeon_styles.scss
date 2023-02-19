@@ -23,8 +23,10 @@ section{
     }
 }
 .header{
-    height: 175px;
     img{
         width: 100%;
+        opacity: 0.4;
+        position: absolute;
+        display: flex;
     }
 }
