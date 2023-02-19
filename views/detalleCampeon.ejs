@@ -25,6 +25,8 @@
                                 id="numGymInput">
                             <input type="text" value="<%= campeones.Region %>" class="form-control my-2"
                                 name="Region" id="lista_PokemonInput">
+                            <input type="text" value="<%= campeones.Video %>" class="form-control my-2"
+                                name="Video" id="lista_PokemonInput">
                             <button class="btn btn-warning btn-sm" type="submit">
                                 Editar
                             </button>
@@ -68,13 +70,14 @@
             const Lore = formEditar.elements['Lore'].value
             const Precio = formEditar.elements['Precio'].value
             const Region = formEditar.elements['Region'].value
+            const Video = formEditar.elements['Video'].value
             const id = formEditar.dataset.id
             const data = await fetch(`/campeones/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ Nombre, Img,FechaSalida, Habilidades, Lore, Precio, Region })
+                body: JSON.stringify({ Nombre, Img,FechaSalida, Habilidades, Lore, Precio, Region, Video })
             })
             const res = await data.json()
             if (res.estado) {

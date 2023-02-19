@@ -8,7 +8,7 @@
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/campeones/crearCampeon">Crear un nuevo campeon</a></div>
             <div class="col-6"><a class="btn btn-success btn-block my-4" href="/menu">Volver</a></div>
         </div>
-        <table class="table">
+        <table class="table table-sm text-info">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
@@ -19,6 +19,7 @@
                     <th scope="col">Lore</th>
                     <th scope="col">Precio</th>
                     <th scope="col">Región</th>
+                    <th scope="col">Video</th>
                     <th scope="col">Acción</th>
                 </tr>
             </thead>
@@ -50,6 +51,9 @@
                             </td>
                             <td>
                                 <%= campeones.Region %>
+                            </td>
+                            <td>
+                                <iframe src="<%= campeones.Video %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             </td>
                             <td>
                                 <a class="btn btn-warning btn-sm" href="campeones/<%= campeones.id %>/editar">Editar/Eliminar</a>

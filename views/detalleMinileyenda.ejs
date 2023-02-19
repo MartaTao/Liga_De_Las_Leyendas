@@ -21,6 +21,8 @@
                                 id="regionInput">
                             <input type="text" value="<%= miniLeyendas.Precio %>" class="form-control my-2"
                                 name="Precio" id="numGymInput">
+                            <input type="text" value="<%= miniLeyendas.Video %>" class="form-control my-2"
+                                name="Video" id="lista_PokemonInput">
                             <button class="btn btn-warning btn-sm" type="submit">
                                 Editar
                             </button>
@@ -62,13 +64,14 @@
             const Fecha = formEditar.elements['Fecha'].value
             const Tier = formEditar.elements['Tier'].value
             const Precio = formEditar.elements['Precio'].value
+            const Video = formEditar.elements['Video'].value
             const id = formEditar.dataset.id
             const data = await fetch(`/minileyendas/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ Nombre, Img, Fecha, Tier, Precio })
+                body: JSON.stringify({ Nombre, Img, Fecha, Tier, Precio, Video })
             })
             const res = await data.json()
             if (res.estado) {

@@ -13,10 +13,10 @@
                         <!--Haremos el foreach para recorrer el array-->
                         <% arrayCampeones.forEach(campeones=> { %>
 
-                            <div class="col-6">
-                                <img src="<%= campeones.Img %>" width="100%">
+                            <div class="col-2">
+                                <img src="<%= campeones.Img %>" height="100vh">
                             </div>
-                            <div class="col-6">
+                            <div class="col-2">
                                 <a href="campeones/<%= campeones.id %>/<%= campeones.Nombre %>">
                                     <%= campeones.Nombre %>
                                 </a>
@@ -26,14 +26,15 @@
                                 <% } %>
                 </div>
             </div>
-            <div class="build">
-                <h2>Builds</h2>
+            <h2>Builds</h2>
+            <div class="build row aling-items-center container-fluid">
+
 
                 <% if (arrayBuild.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
                     <% arrayBuild.forEach(build=> { %>
                         <div class="row">
-                            <div class="col-12">
+                            <div class="col-6">
                                 <a href="builds/<%= build.id %>/<%= build.Nombre %>">
                                     <%= build.Nombre %>
                                 </a>
@@ -42,18 +43,18 @@
                         <% }) %>
                             <% } %>
 
-            </div>
-            <div class="modos">
-                <h2>Modos</h2>
+            </div>     
+            <h2>Modos</h2>
+            <div class="modos row aling-items-center container-fluid">
 
                 <% if (arrayModo.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
                     <% arrayModo.forEach(modo=> { %>
                         <div class="row">
-                            <div class="col-6">
-                                <img src="<%= modo.Img%>" width="100%">
+                            <div class="col-8">
+                                <img src="<%= modo.Img%>" height="250vh">
                             </div>
-                            <div class="col-6">
+                            <div class="col-8">
                                 <a href="modos/<%= modo.id %>/<%= modo.Nombre %>">
                                     <%= modo.Nombre %>
                                 </a>
@@ -64,15 +65,16 @@
                             <% } %>
 
             </div>
-            <div class="minileyendas">
-                <h2>Minileyendas</h2>
+            <h2>Minileyendas</h2>
+            <div class="minileyendas row aling-items-center container-fluid">
+
 
                 <% if (arrayMinileyendas.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
                     <% arrayMinileyendas.forEach(minileyenda=> { %>
                         <div class="row">
                             <div class="col-6">
-                                <img src="<%= minileyenda.Img %>" width="100%">
+                                <img src="<%= minileyenda.Img %>" height="100vh">
                             </div>
                             <div class="col-6">
                                 <a href="minileyendas/<%= minileyenda.id %>/<%= minileyenda.Nombre %>">
@@ -84,8 +86,9 @@
                             <% } %>
 
             </div>
-            <div class="skins">
-                <h2>Skins</h2>
+            <h2>Skins</h2>
+            <div class="skins row aling-items-center container-fluid">
+
 
                 <% if (arraySkins.length> 0) { %>
                     <!--Haremos el foreach para recorrer el array-->
@@ -93,9 +96,9 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-3 col-sm-12">
 
-                                <img src="<%=skin.Img%>" width="100%">
+                                <img src="<%=skin.Img%>" height="100vh">
                             </div>
-                            <div class="col-lg-6 col-md-3 col-sm-12">
+                            <div class="col-lg-8 col-md-3 col-sm-12">
                                 <a href="skins/<%= skin.id %>/<%= skin.Nombre %>">
                                     <%= skin.Nombre %>
                                 </a>
